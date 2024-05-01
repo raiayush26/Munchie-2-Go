@@ -31,7 +31,8 @@ export const ListedItems = ({
             <SubtractButton onClick={() => decreaseCount(i)} />
           </div>
         )}
-        <IMG src={require(`../uploads/${item.src}`)} alt={item.name} />
+        {/* this image has to be dyamic */}
+        <IMG src={require(`../uploads/${item.src} `)|| require(`../../imgs/allo.png`) } alt={item.name} />
         <input type="radio" id="custom_b" name="custom" value="Large" onChange={onChangeHandler}/><label for="custom_b">Large</label>
         <input type="radio" id="custom_b" name="custom" value="Medium" onChange={onChangeHandler}/><label for="custom_b">Medium</label>
         <input type="radio" id="custom_b" name="custom" value="Small" onChange={onChangeHandler}/><label for="custom_b">Small</label>

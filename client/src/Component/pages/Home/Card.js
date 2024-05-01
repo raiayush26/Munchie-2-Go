@@ -79,7 +79,7 @@ export default function Card({ data, addToCart ,onChangeHandler}) {
     <div className="card ">
       <div className="card-image">
         <figure className="image is-4by3">
-          <img src={require(`../uploads/${data.src}`)} className="item-image" alt="image1" />
+          <img src={require(`../uploads/${data.src}`) || require(`../../imgs/allo.png`)} className="item-image" alt="image1" />
         </figure>
       </div>
       <div className="card-content has-text-centered">
