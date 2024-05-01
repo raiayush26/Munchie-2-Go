@@ -1,6 +1,6 @@
 const { MongoClient } = require("mongodb");
-const Db = "mongodb+srv://foodpop:food123@foodapp.3mlcdml.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(Db, {
+const Db = process.env.DB;
+const client = new MongoClient(process.env.DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

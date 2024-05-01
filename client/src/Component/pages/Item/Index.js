@@ -22,7 +22,7 @@ export default function Index() {
 
     const getMenu=async() =>{
       try{
-        const res = await axios.get(`http://localhost:2610/menu/menu/get/`)
+        const res = await axios.get(`http://localhost:2610/menu/menu/get`)
         setItems(res.data)
       }
       catch (error) {console.log(error);}
@@ -35,7 +35,7 @@ export default function Index() {
         const res = await axios.get(`http://localhost:2610/QR/getQR/${Code}`)
         console.log(res.data.length);
         if (res.data.length===0) {
-          navigate('/no')
+          // navigate('/no')
           
         }else{
           setfoundEntry(res.data)

@@ -1,4 +1,4 @@
-import {  NavLink, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Roles from "./Roles";
 // import Master from "../pages/Admin/Master";
@@ -8,7 +8,7 @@ import { auth } from "../firebase";
 
 const RequireAuth = ()=>{
           const [isAuthicated,setAuthicated]= useState(false)
-          const[admin,setadmin]= useState(false)
+          // const[admin,setadmin]= useState(false)
 useEffect(()=>{
   console.log(Roles);
   // Roles.forEach()

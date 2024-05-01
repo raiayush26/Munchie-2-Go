@@ -70,7 +70,7 @@ export default function App1() {
           }}
           onClick={() => setShowCart(false)}
         >
-          Tapop
+          Munchies2Go
         </h1>
         <div>
           <form onSubmit={Submit}>

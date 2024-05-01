@@ -34,7 +34,9 @@ menuRoute.get('/menu/get', async (req,res)=>{
 
 menuRoute.post('/menu/post',upload.single("photo"), async (req,res)=>{   
     const t="slave"
-    const {filename} = req.file;
+     const {filename} = req.file || ' ';
+     console.log(filename);
+     
     try {      
               const newMenu= new slave({
                         name:req.body.name,

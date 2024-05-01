@@ -9,6 +9,7 @@ import Export from "./Component/pages/Admin/Export";
 import RequireAuth from "./Component/hooks/RequireAuth";
 import Datatable from "./Component/pages/Admin/Table";
 import Datatable2 from "./Component/pages/Admin/DataTablemas";
+import Logout from "./Component/pages/Admin/SignOut/Signout";
 // Qr
  import QR from "./Component/QR/QR";
 
@@ -35,8 +36,9 @@ function App() {
                         
                       {/* Public Routes */}
                       <Route path= "/admin" element = {<Admin />} />
-                        <Route path ="/table" element= {<Datatable/>}/>
+                      <Route path ="/table" element= {<Datatable/>}/>
                       <Route path ="/" element= {<AdLogin/>}/>
+                      <Route path='/logout' element={<Logout/>}/>
                       
                       <Route path ="/ce2" element= {<CustomExport2/>}/>
                       <Route path ="/Export" element= {<Export/>}/>

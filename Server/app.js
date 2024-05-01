@@ -37,8 +37,8 @@ app.use('/admin',Adminroute)
 app.use('/menu',menuRoute)
 app.use('/review',Reviewroute)
 app.use('/record',recordRoutes)
-let uri = "mongodb+srv://foodpop:food123@foodapp.3mlcdml.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(uri, (err) => {
+
+mongoose.connect(process.env.DB, (err) => {
 
     if (!err) {
         console.log("Connection to database successful!");

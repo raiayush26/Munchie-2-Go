@@ -48,7 +48,7 @@ const navigate=useNavigate();
    <div className="d-flex align-items-center mb-5">
                           <div className="flex-shrink-0">
                             <MDBCardImage
-                              src={require(`./uploads/${item.src}`)}
+                              src={require(`./uploads/${item.src}`)|| require(`../imgs/allo.png`)}
                               fluid
                               style={{ width: "150px" }}
                               alt="Generic placeholder image"

@@ -6,8 +6,12 @@ import axios from 'axios';
 
 import { Button } from '@mui/material';
 import Sidebar from '../Sidebar/Sidebar';
+// import { auth } from '../../../firebase';
+import{ auth} from '../../firebase'
+import {signOut} from 'firebase/auth'
+import { useNavigate } from 'react-router-dom';
 export default function Master() {
-
+  const navigator = useNavigate();
   // const id = location.state.seatNo;
   // console.log(id);
   const [user,setUser] = useState([])
@@ -33,6 +37,16 @@ const Activate=(e)=>{
     setAactive(true)
     setDactive(false)
     }catch (error) {console.log("error");}
+}
+const logout=()=>{
+ console.log("hello");
+ 
+ navigator('/');
+  signOut(auth).then(() => {
+    alert('Succesful sign out');
+}).catch((error) => {
+  // An error happened.
+});
 }
 useEffect(()=>{getOrder();},[])
 const columns2 =[
@@ -64,6 +78,7 @@ const columns2 =[
         pageSize={10}
       />
     </div>
+    <button onClick={(e)=>logout(e)}>signOut</button>
     </>
   )
 }

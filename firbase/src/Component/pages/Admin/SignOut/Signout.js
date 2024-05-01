@@ -1,11 +1,12 @@
 import {signOut} from 'firebase/auth'
 import { auth } from '../../../firebase';
+import { redirect } from 'react-router-dom';
 const logout = async()=>{
           try {
-           signOut(auth)
-            
+          await signOut(auth);
+          alert('Succesful sign out');
           } catch (error) {
-           console.log("error:- "+error); 
+         
           }
 }
 export default logout
