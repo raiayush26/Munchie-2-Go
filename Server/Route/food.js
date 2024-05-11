@@ -1,8 +1,8 @@
-const foodroute =require('express').Router();
+const FoodRoute =require('express').Router();
 
 const Food =require('../Models/Resturant');
 
-foodroute.post('/item/post', async (req,res)=>{
+FoodRoute.post('/item/post', async (req,res)=>{
           // console.log("post require is working");
           let guid = () => {
             let s4 = () => {
@@ -33,7 +33,7 @@ foodroute.post('/item/post', async (req,res)=>{
 })
 
 // getting the all item present in cart
-foodroute.get('/food/carts',async(req,res)=>{
+FoodRoute.get('/food/carts',async(req,res)=>{
           // console.log("getting the all item present in cart get requst is working");
           try {
                     const specificItem =await Food.find({})
@@ -44,24 +44,20 @@ foodroute.get('/food/carts',async(req,res)=>{
           }
 })
 //getting the item by name
-foodroute.get('/food/:name',async(req,res) =>{
+FoodRoute.get('/food/:name',async(req,res) =>{
     // console.log("getting the paticular get rquest is working");
             const food =req.params.name;
             console.log(food);
           try {
             let query =await Food.findOne({Foodname: food})
              res.json(query);
-           }catch (error) {console.log(error);}
-          
-        
+           }catch (error) {console.log(error);}    
 })
 
 // Delete Item by name
-foodroute.delete('/food/:name', async (req,res)=>{
+FoodRoute.delete('/food/:name', async (req,res)=>{
           // console.log("Deteling  the paticular get item  rquest is working");
-
-          console.log(req.params.name);
-          
+          console.log(req.params.name);          
           try {
               const deleteItem = await Food.findOneAndRemove(req.params.name);
               res.status(200).json('Item deleted');
@@ -71,7 +67,7 @@ foodroute.delete('/food/:name', async (req,res)=>{
 })
       
 // Delte all
-foodroute.delete('/cart/empty',async (req, res)=>{
+FoodRoute.delete('/cart/empty',async (req, res)=>{
           // console.log("/cart/empty get rquest is working");
 
 try {
@@ -83,4 +79,4 @@ try {
 })
 
 
-module.exports = foodroute;
+module.exports = FoodRoute;

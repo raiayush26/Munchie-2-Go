@@ -14,10 +14,10 @@ module.exports = {
       if (db)
       {
         _db = db.db("FoodHall");
-        console.log("Successfully connected to MongoDB."); 
+        console.log("Connected to MongoDB in conn js."); 
       }
       return callback(err);
-         });
+    });
   },
  
   getDb: function () {

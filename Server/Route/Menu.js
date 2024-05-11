@@ -1,4 +1,4 @@
-const menuRoute =require('express').Router();
+const MenuRoute =require('express').Router();
 const multer = require("multer");
 const slave =require('../Models/Menu');
 
@@ -22,7 +22,7 @@ const upload = multer({
     fileFilter:isImage
 });
 
-menuRoute.get('/menu/get', async (req,res)=>{
+MenuRoute.get('/menu/get', async (req,res)=>{
     try {
             const Menu =await slave.find({})
             res.status(200).json(Menu)
@@ -32,7 +32,7 @@ menuRoute.get('/menu/get', async (req,res)=>{
     }
 })
 
-menuRoute.post('/menu/post',upload.single("photo"), async (req,res)=>{   
+MenuRoute.post('/menu/post',upload.single("photo"), async (req,res)=>{   
     const t="slave"
      const {filename} = req.file || ' ';
      console.log(filename);
@@ -54,4 +54,4 @@ menuRoute.post('/menu/post',upload.single("photo"), async (req,res)=>{
     
 })
 
-module.exports = menuRoute;
+module.exports = MenuRoute;

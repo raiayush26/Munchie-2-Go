@@ -1,11 +1,11 @@
 // all are unused 
-const approuter = require('express').Router();
+const UserRoute = require('express').Router();
 
 
 const bcrypt = require("bcrypt");
 const User = require('../models/adminModel');
 
-approuter.post("/register",async function(req,res){
+UserRoute.post("/register",async function(req,res){
     console.log("this is workin");
   try{
     const plainPassword = req.body.password;
@@ -28,7 +28,7 @@ approuter.post("/register",async function(req,res){
     
 }
 })
-approuter.post("/adminLogin",async function(req,res){
+UserRoute.post("/adminLogin",async function(req,res){
   try{
     const reqEmail = req.body.username;
         const reqPassword = req.body.password;
@@ -60,7 +60,7 @@ approuter.post("/adminLogin",async function(req,res){
     
 }
 })
-approuter.get('/user',async(req,res)=>{
+UserRoute.get('/user',async(req,res)=>{
         //   console.log("working");
           try {
                     const specificUser =await User.find({admintype:"Slave"})
@@ -70,7 +70,7 @@ approuter.get('/user',async(req,res)=>{
                     
           }
 })
-approuter.put('/updated/deactive/:id', async (req, res)=>{
+UserRoute.put('/updated/deactive/:id', async (req, res)=>{
     console.log("update post is working");
           console.log(req.params.id);
         //   console.log(req.body);
@@ -82,7 +82,7 @@ approuter.put('/updated/deactive/:id', async (req, res)=>{
               res.json(error)
           }
 })
-approuter.put('/updated/active/:id', async (req, res)=>{
+UserRoute.put('/updated/active/:id', async (req, res)=>{
     console.log("update post is working");
           console.log(req.params.id);
         //   console.log(req.body);
@@ -94,7 +94,7 @@ approuter.put('/updated/active/:id', async (req, res)=>{
               res.json(error)
           }
 })
-approuter.get('/getname/:username',async(req,res)=>{
+UserRoute.get('/getname/:username',async(req,res)=>{
     console.log(req.params.username);
     console.log("master");
     try {
@@ -107,4 +107,4 @@ approuter.get('/getname/:username',async(req,res)=>{
     }
 })
 
-module.exports = approuter;
+module.exports = UserRoute;
