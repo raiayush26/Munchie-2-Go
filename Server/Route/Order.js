@@ -1,8 +1,8 @@
-const Orderroute =require('express').Router();
+const OrderRoute =require('express').Router();
 
 const Order =require('../Models/Order');
 // posting  order
-Orderroute.post('/Order/post', async (req,res)=>{
+OrderRoute.post('/Order/post', async (req,res)=>{
 
     try {
       const date=new Date();
@@ -34,7 +34,7 @@ Orderroute.post('/Order/post', async (req,res)=>{
     
 })
 // Getting the all ORder
-Orderroute.get('/Order/get', async (req,res)=>{
+OrderRoute.get('/Order/get', async (req,res)=>{
     try {
             const AllOrder =await Order.find({})
             res.status(200).json(AllOrder)
@@ -44,7 +44,7 @@ Orderroute.get('/Order/get', async (req,res)=>{
     }
 })
 // Getting the  ORder where payment is cod
-Orderroute.get('/paymentMode/:payment', async (req,res)=>{
+OrderRoute.get('/paymentMode/:payment', async (req,res)=>{
     // console.log(" Getting the  ORder where payment is cod");
                 const payment = req.params.payment
     try {
@@ -56,7 +56,7 @@ Orderroute.get('/paymentMode/:payment', async (req,res)=>{
     }
 })
 //  Getting the order from paticular hall
-Orderroute.get('/hall/:no', async (req,res)=>{
+OrderRoute.get('/hall/:no', async (req,res)=>{
     // console.log("Getting the order from paticular hall");
     const HallNo = req.params.no
     // console.log(req.params.no);
@@ -69,7 +69,7 @@ res.json(error);
 }
 })
 // Getting the order by Custmer Id
-Orderroute.get('/:Id', async (req,res)=>{
+OrderRoute.get('/:Id', async (req,res)=>{
     // console.log("wokrdf");
     const orderID = req.params.Id
 try {
@@ -81,7 +81,7 @@ res.json(error);
 }
 })
 //  Getting the order by phone no
-Orderroute.get('/phone/:phone', async (req,res)=>{
+OrderRoute.get('/phone/:phone', async (req,res)=>{
     const phoneNo = req.params.phone
     // console.log(phoneNo);
 try {
@@ -93,7 +93,7 @@ res.json(error);
 }
 })
 //Getting the order by seat no 
-Orderroute.get('/seatno/:seatno', async (req,res)=>{
+OrderRoute.get('/seatno/:seatno', async (req,res)=>{
     const Seatno = req.params.seatno
     // console.log(phoneNo);
 try {
@@ -105,7 +105,7 @@ res.json(error);
 }
 })
 //Getting the order by which slave no 
-Orderroute.get('/slave/:slave', async (req,res)=>{
+OrderRoute.get('/slave/:slave', async (req,res)=>{
     const slave = req.params.slave
     
 try {
@@ -118,7 +118,7 @@ res.json(error);
 })
 
 // Getting the specific ORder
-Orderroute.get('/Order/get/:user', async (req,res)=>{
+OrderRoute.get('/Order/get/:user', async (req,res)=>{
     try {
         console.log(req.params.user);
         const specificUser =await Order.find({Orderby:req.params.user})
@@ -130,4 +130,4 @@ Orderroute.get('/Order/get/:user', async (req,res)=>{
 })
 
 
-module.exports = Orderroute;
+module.exports = OrderRoute;

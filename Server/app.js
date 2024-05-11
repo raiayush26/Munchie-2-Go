@@ -4,16 +4,11 @@ const mongoose = require('mongoose');
 const foodroute = require('./Route/food')
 const Cartroute = require('./Route/Cart')
 const Adminroute = require('./Route/User')
-const Reviewroute = require('./Route/Review')
+
 const Orderroute = require('./Route/Order')
 const QRrouter = require('./Route/QR')
-const menuRoute = require('./Route/Menu')
-const recordRoutes=require('./Route/Social')
 const bodyParser=require('body-parser')
-// const session = require('express-session');
-// const passport = require("passport");
 
-// const jwt = require('jsonwebtoken')
 
 const cors = require('cors');
 
@@ -34,14 +29,11 @@ app.use('/cart',Cartroute)
 app.use('/order',Orderroute)
 app.use('/QR',QRrouter)
 app.use('/admin',Adminroute)
-app.use('/menu',menuRoute)
-app.use('/review',Reviewroute)
-app.use('/record',recordRoutes)
 
 mongoose.connect(process.env.DB, (err) => {
 
     if (!err) {
-        console.log("Connection to database successful!");
+        console.log("Connected to MongoDB in app js.");
     }
     
 });
