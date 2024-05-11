@@ -19,6 +19,7 @@ function QR() {
       const res = await QRCode.toDataURL(linkes+values.Sitno);
       
       setImgeUrl(res)
+      
       axios.post(`http://localhost:2610/QR/postQR`,
       {
         id:values.id,
@@ -29,6 +30,7 @@ function QR() {
         Mall:values.mall,
         // I:imageUrl
       })
+      setbtn(true);
     } catch (error) {console.log(error);}
   }
 
@@ -50,20 +52,20 @@ function QR() {
            <form>
             <div className='form'>       
             
-          <input lable ="id" placeholder="id" onChange={(e)=>setvalues((prev)=>({...prev ,id:e.target.value}))} />
-          <input lable ="Name" placeholder="Name" onChange={(e)=>setvalues((prev)=>({...prev ,Name:e.target.value}))}/>
-          <input lable ="Sit no" placeholder="Sitno" onChange={(e)=>setvalues((prev)=>({...prev ,Sitno:e.target.value}))} />
-          <input lable ="Audi no" placeholder='Audi no' onChange={(e)=>setvalues((prev)=>({...prev ,Audino:e.target.value}))} />
-          <input lable ="Hall" placeholder='hall'onChange={(e)=>setvalues((prev)=>({...prev ,hallno:e.target.value}))} />
-          <input lable ="Mall" placeholder='Mall' onChange={(e)=>setvalues((prev)=>({...prev ,mall:e.target.value}))} />
+          <input label ="id" placeholder="id" onChange={(e)=>setvalues((prev)=>({...prev ,id:e.target.value}))} />
+          <input label ="Name" placeholder="Name" onChange={(e)=>setvalues((prev)=>({...prev ,Name:e.target.value}))}/>
+          <input label ="Sit no" placeholder="Sitno" onChange={(e)=>setvalues((prev)=>({...prev ,Sitno:e.target.value}))} />
+          <input label ="Audi no" placeholder='Audi no' onChange={(e)=>setvalues((prev)=>({...prev ,Audino:e.target.value}))} />
+          <input label ="Hall" placeholder='hall'onChange={(e)=>setvalues((prev)=>({...prev ,hallno:e.target.value}))} />
+          <input label ="Mall" placeholder='Mall' onChange={(e)=>setvalues((prev)=>({...prev ,mall:e.target.value}))} />
           
-          <button onClick={e => {addItem(e.preventDefault())}}>Sumit</button>
+          <button onClick={e => {addItem(e.preventDefault())}}>Submit</button>
           </div>
         </form>
 
         <div >
         
-        {btn===true ?(<div id='qrCodeEl'> <a href={imageUrl}  download><img id="qrCodeEl" classname ="asd"src={imageUrl} onClick={onDownloadClick} alt ='img'/></a></div>) : null}
+        {btn===true ?(<div id='qrCodeEl'> <a href={imageUrl}  download><img id="qrCodeEl" className ="asd"src={imageUrl} onClick={onDownloadClick} alt ='img'/></a></div>) : null}
        <button onClick={onDownloadClick}>download</button>
        
       </div>

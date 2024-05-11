@@ -2,13 +2,14 @@ import React from "react";
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
 
-const SignIn = ({ loginSubmit, otpSubmit, viewOtpForm , handleOnChange}) => {
+const SignIn = ({ loginSubmit, otpSubmit, viewOtpForm , handleOnChange,DivContainer}) => {
 
   return (
     <div className="wrapper">
       <h4><p className="sub-text">Verify using your mobile number.</p></h4>
       {!viewOtpForm ? (
         <div className="form-wrapper">
+          <div id={DivContainer}></div>
           <form id="loginForm" onSubmit={loginSubmit}>
             <div className="input-field">
               <label>Phone Number</label>

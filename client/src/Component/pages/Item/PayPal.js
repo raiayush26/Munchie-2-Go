@@ -50,7 +50,7 @@ console.log(price);
 
     return (
         <PayPalScriptProvider options={{ "client-id": "ATE90LzYjYOg3MTxxxetdE0-soPT_ggmhTQnT_kBG2b9RKBa_cgOuDB7E2SA8HMzeV6MfBZPuREpMIrP" }}>
-<PayPalButtons
+  <PayPalButtons
            style={{ layout: "vertical" }}
            createOrder={createOrder}
            onApprove={onApprove}
