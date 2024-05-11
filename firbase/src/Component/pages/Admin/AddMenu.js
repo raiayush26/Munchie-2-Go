@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router";
-import  Toast  from "../Toast/toast";
-import ToastContainer from "../Toast/toastContai";
+import { toast } from "react-toastify";
+
+import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'; 
-// import axios from 'axios'
+import axios from 'axios'
 import './addmenu.css'
 // import { useRef } from "react";
-import {ref,  getDownloadURL, uploadBytes} from "firebase/storage";
+// import {ref,  getDownloadURL, uploadBytes} from "firebase/storage";
 // import {uploadBytesResumable} from "firebase/storage";
-import { storage } from "../../firebase";
-import {auth} from "../../firebase";
+// import { storage } from "../../firebase";
+// import {auth} from "../../firebase";
 
 export default function AddMenu() {
-  const { currentUser } = auth;
+  // const { currentUser } = auth;
   // const Id = currentUser.uid;
  const [form, setForm] = useState({
    name: "",
@@ -32,30 +33,54 @@ export default function AddMenu() {
  }
 
   console.log()
- // This function will handle the submission.
- async function onSubmit(e) {
-   e.preventDefault();
-   const imageRef = ref(storage, `/images/${currentUser.uid}/${file.name}`);
-   await uploadBytes(imageRef, file)
-     .then((snapshot) => {
-       getDownloadURL(snapshot.ref)
-         .then(async (downloadURL) => {
-   // e.preventDefault();
-   console.log("Image URL:", downloadURL);
-   var formData = new FormData();
-   formData.append("link", downloadURL);
+  async function onSubmit(e) {
+    e.preventDefault();
+    try {
+      var formData = new FormData();
+      formData.append("photo", file);
+      formData.append("name", form.name);
+      formData.append("price", form.price);
+      formData.append("category", form.category);
+      console.log(file);
+      const config = {
+       headers: {
+         "Content-Type": "multipart/form-data"
+       }
+     }
+     const res = await axios.post("http://localhost:2610/menu/menu/post", formData, config)
+     console.log(res.data); 
+     toast.info(res.data);
+      setForm({ name: "", price: "", src: "",category:""});
+    } catch (error) {
+      console.log(error); 
+      toast.error("SomeThing went wrong")
+    }
 
-   formData = new FormData();
-   formData.append("photo", file);
-   formData.append("name", form.name);
-   formData.append("price", form.price);
-   formData.append("category", form.category);
-   console.log(file);
+  }
+ // This function will handle the submission.
+//  async function onSubmit(e) {
+//    e.preventDefault();
+//   //  const imageRef = ref(storage, `/images/${currentUser.uid}/${file.name}`);
+//   //  await uploadBytes(imageRef, file)
+//   //    .then((snapshot) => {
+//   //      getDownloadURL(snapshot.ref)
+//   //        .then(async (downloadURL) => {
+//   //  // e.preventDefault();
+//   //  console.log("Image URL:", downloadURL);
+//    var formData = new FormData();
+//   //  formData.append("link", downloadURL);
+
+//    formData = new FormData();
+//    formData.append("photo", file);
+//    formData.append("name", form.name);
+//    formData.append("price", form.price);
+//    formData.append("category", form.category);
+//    console.log(file);
    
-  console.log(formData);
-  Toast.msg("item is save")
-  // const res = await axios.post("http://localhost:2610/menu/menu/post", formData, config) 
-  // console.log(res.data);
+//   console.log(formData);
+//   Toast.msg("item is save")
+//   const res = await axios.post("http://localhost:2610/menu/menu/post", formData, config) 
+//   console.log(res.data);
 //  if (res.data==="item is save") {
 //   Toast.msg("item is save")
   
@@ -63,18 +88,18 @@ export default function AddMenu() {
   
 //  }
  
-   setForm({ name: "", price: "", src: "",category:""});
+//    setForm({ name: "", price: "", src: "",category:""});
 
-   }).catch((err) => {
-         console.error("Error getting download URL from Firebase", err);
-       });
-   })
-   .catch((err) => {
-     console.error("Error uploading image to Firebase Storage", err);
-   });
+//   //  }).catch((err) => {
+//   //        console.error("Error getting download URL from Firebase", err);
+//   //      });
+//   //  })
+//   //  .catch((err) => {
+//   //    console.error("Error uploading image to Firebase Storage", err);
+//   //  });
    
-  //  navigate("/");
- }
+//   //  navigate("/");
+//  }
  
  return (
    <div>

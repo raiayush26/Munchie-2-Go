@@ -36,14 +36,16 @@ const getOrder =async() =>{
     catch (error) {console.log("error");}
 }
 
-useEffect(()=>{ getOrder();},[user])
+useEffect(()=>{ 
+  // eslint-disable-next-line
+  getOrder();},[user])
   return (
     <>
       <SideSlave/>
      <Container >
       <Card>
         <Grid container spacing={2} columnSpacing={-20}  rowSpacing={-5}>
-              <h1 className="wel">Weclome {user}</h1>
+              <h1 className="wel">Welcome {user}</h1>
         </Grid>
        
        <Grid item xl={12} md={6} sm={12} xm={12} className="grid">

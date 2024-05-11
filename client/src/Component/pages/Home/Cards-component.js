@@ -5,6 +5,7 @@ export default function CardsComponent({ data, addToCart, search,onChangeHandler
   const [filterValue, setFilteredValue] = React.useState("");
 
   let filteredData = data;
+  console.log(data);
   if (filterValue) {
     filteredData = data.filter(
       (element) => element.categoryName === filterValue

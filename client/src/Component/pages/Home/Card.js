@@ -7,7 +7,7 @@ export default function Card({ data, addToCart ,onChangeHandler}) {
     addToCart(data._id, (data.addedCount || 0) + data.quantity);
   }
 
-  function Substract() {
+  function Subtraction() {
     addToCart(data._id, (data.addedCount || 0) - data.quantity);
     if (data.addedCount === 0) {
       setCartButton(true);
@@ -18,7 +18,7 @@ export default function Card({ data, addToCart ,onChangeHandler}) {
   function ChangingButton() {
     return (
       <div className="inside-cart-button">
-        <button onClick={Substract} className="substraction">
+        <button onClick={Subtraction} className="Subtractionion">
           -
         </button>
         <h5 className="number">
