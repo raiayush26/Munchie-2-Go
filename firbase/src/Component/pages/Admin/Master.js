@@ -52,7 +52,7 @@ useEffect(()=>{getOrder();},[])
 const columns2 =[
 {field: 'username',headerName:'Username',width: 200},
 {field:'access',headerName:'Active/Deactive',width: 200},
-{ field:'Deactive',headerName:'Deactive',width: 200,renderCell:(params)=>{
+{ field:'Deactivate',headerName:'Deactivate',width: 200,renderCell:(params)=>{
   return(
     
     <Button disabled={dactive} onClick={(e)=>Deactivate(params.id)}>Deactivate</Button>
@@ -65,11 +65,15 @@ const columns2 =[
     <Button disabled={aactive} onClick={(e)=>Activate(params.id)}>Activate</Button>
   )
 }},
+
 ]
+
   return (
     <>
     <Sidebar/>
+    
     <div style={{ height: 700,marginLeft:150,  width: '100%' }}>
+    <button onClick={(e)=>logout(e)}>signOut</button>
       <DataGrid
         rows={user}
         disableSelectionOnClick
@@ -78,7 +82,7 @@ const columns2 =[
         pageSize={10}
       />
     </div>
-    <button onClick={(e)=>logout(e)}>signOut</button>
+    
     </>
   )
 }

@@ -1,10 +1,11 @@
 import React, {  useEffect, useState } from "react";
-import OrderProduct from "./Order";
+// import OrderProduct from "./Order";
 import axios from 'axios'
 import styled from "styled-components";
-import API from "./mockAPI";
+// import API from "./mockAPI";
 import { ListedItems } from "./ListedItems";
-import { useParams, useNavigate} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
+// import { useNavigate} from 'react-router-dom';
 import { FixedCart } from "./FixedCart";
 import { CartDetails } from "./CartDetails";
 import { Overlay } from "./Overlay";
@@ -12,7 +13,7 @@ let foundEntry= {}
 
 export default function Index() {
   const {Code} = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const [cart, setCart] = useState([]);
     const [foundEntry2 ,setfoundEntry] =useState([]);
     // const [items, setItems] = useState(API);
@@ -46,8 +47,9 @@ export default function Index() {
   useEffect(()=>{
     getQRcode();
     getMenu();
-   console.log(items);
-  //  console.log(menus);
+    console.log(items);
+    //  console.log(menus);
+    // eslint-disable-next-line
   },[])
   
 

@@ -1,19 +1,17 @@
 import { initializeApp } from "firebase/app";
-import firebase from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// import firebase from "firebase/app";
+import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-export const firebaseConfig = {
-          apiKey: "AIzaSyDHR5_iaScP6Aku56TtUJSXMfbd9yWTizM",
-          authDomain: "phoneauthenticationtapop.firebaseapp.com",
-          projectId: "phoneauthenticationtapop",
-          storageBucket: "phoneauthenticationtapop.appspot.com",
-          messagingSenderId: "678175404379",
-          appId: "1:678175404379:web:ebcde2846caaff8832aa7e",
-          measurementId: "G-FBBKP62151"
+
+ const firebaseConfig = {
+  apiKey: "AIzaSyBohaQ9gExSnEQAia5FFsiiq65LJ55oYss",
+  authDomain: "walmart-d07f5.firebaseapp.com",
+  projectId: "walmart-d07f5",
+  storageBucket: "walmart-d07f5.appspot.com",
+  messagingSenderId: "939135917636",
+  appId: "1:939135917636:web:382893b82d37d257dd2611",
+  measurementId: "G-778JRTJ1B8"
 };
-firebase.initializeApp(firebaseConfig)
-// Initialize Firebase
-export default firebase
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
