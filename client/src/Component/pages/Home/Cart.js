@@ -12,16 +12,16 @@ const seatNo= foundEntry.SitNo;
 const HallNo=foundEntry.Audi;
 const name=foundEntry.Name;
 const Mall = foundEntry.Mall;
-  function post(item){  
-    console.log(item);
+
+  function Post(item){  
   food.push(item.name)
   radio.push(item.radio)
   price=price+(item.price*item.quantity)
   }
+
   function handleOnClick(cart) {
     // random number gerator
     var characters = "ABCDEFGHIJKLMNOPQRSTUVWXTZ";
-              
               //specify the length for the new string
     var lenString = 1;
     var randomstring = '';
@@ -33,15 +33,19 @@ const Mall = foundEntry.Mall;
     }
   var n =Math.floor(Math.random()*(999-100+1)+100);
             const orderID=randomstring+n;
-  {cart.map((item) => (
-  post(item)
-      ))}
+
+ // eslint-disable-next-line
+  { 
+     
+    cart.map((item) => (Post(item))) 
+
+  }
   
       console.log(radio);
       console.log(price);
       console.log(radio);
       console.log(Mall);
-      const res = axios.post(`http://localhost:2610/cart/Cart/post`,
+      axios.post(`http://localhost:2610/cart/Cart/post`,
       {
         orderID:orderID,
       foodName:food,
