@@ -15,8 +15,8 @@ export default function Master() {
   // const id = location.state.seatNo;
   // console.log(id);
   const [user,setUser] = useState([])
-  const [aactive,setAactive]=useState(false)
-  const [dactive,setDactive]=useState(false)
+  const [Active,setActive]=useState(false)
+  const [deactive,setdeactive]=useState(false)
 
   const getOrder =async() =>{
     try {
@@ -27,15 +27,15 @@ export default function Master() {
 const Deactivate=(e)=>{
   try {
     axios.put(`http://localhost:2610/admin/updated/deactive/${e}`)
-    setAactive(false)
-    setDactive(true)
+    setActive(false)
+    setdeactive(true)
     }catch (error) {console.log("error");}
 }
 const Activate=(e)=>{
   try {
     axios.put(`http://localhost:2610/admin/updated/active/${e}`)
-    setAactive(true)
-    setDactive(false)
+    setActive(true)
+    setdeactive(false)
     }catch (error) {console.log("error");}
 }
 const logout=()=>{
@@ -51,18 +51,18 @@ const logout=()=>{
 useEffect(()=>{getOrder();},[])
 const columns2 =[
 {field: 'username',headerName:'Username',width: 200},
-{field:'access',headerName:'Active/Deactive',width: 200},
+{field:'access',headerName:'Active/deactive',width: 200},
 { field:'Deactivate',headerName:'Deactivate',width: 200,renderCell:(params)=>{
   return(
     
-    <Button disabled={dactive} onClick={(e)=>Deactivate(params.id)}>Deactivate</Button>
+    <Button disabled={deactive} onClick={(e)=>Deactivate(params.id)}>Deactivate</Button>
   )
 }},
 { field:'Active',headerName:'Active',width: 200,renderCell:(params)=>{
   // console.log(params.id);
   return(
     
-    <Button disabled={aactive} onClick={(e)=>Activate(params.id)}>Activate</Button>
+    <Button disabled={Active} onClick={(e)=>Activate(params.id)}>Activate</Button>
   )
 }},
 

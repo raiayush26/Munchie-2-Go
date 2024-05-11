@@ -1,4 +1,4 @@
 email :- master@admin.com
-passord master
+password 123456
 email:-ayush.mlzsalld2626@gmail.com
 pawd:-123456

@@ -12,7 +12,7 @@ export default function App1() {
   const navigate = useNavigate();
   const [search, setSearch] = React.useState("");
   const [data, setData] = React.useState([]);
-  const [radio, setRadio] = React.useState('');
+  const [, setRadio] = React.useState('');
 
   const [showCart, setShowCart] = React.useState(false);
   const [foundEntry2 ,setfoundEntry] =React.useState([]);
@@ -43,6 +43,7 @@ export default function App1() {
   React.useEffect(() => {
     getQRcode();
     Submit();
+    // eslint-disable-next-line
   }, []);
 
 
@@ -70,7 +71,7 @@ export default function App1() {
           }}
           onClick={() => setShowCart(false)}
         >
-          Munchies2Go
+          Munchies-2-Go
         </h1>
         <div>
           <form onSubmit={Submit}>
