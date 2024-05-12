@@ -17,8 +17,12 @@ export default function OrderSucc() {
           We received your order request
           <br/>Your OrderID is "<u>{orderID}</u>" it will be asked on your order delivery
           <br /> Your order will be delivered in 15min</h5>
+
           <br />
+          <button className="btn btn-primary" onClick={() => window.location.replace("/")}>Home</button>
           <br/>
+          <br/>
+          
         </p>
       </div>
       <br />

@@ -18,7 +18,7 @@ const handlechange =() =>{
                 
             </div>
             <ul>
-                <li><a href="/QR">QR</a></li> 
+                <li><a href="/addqr">QR</a></li> 
                 <li><a href="/Mastable">Order table</a></li>
 
                 

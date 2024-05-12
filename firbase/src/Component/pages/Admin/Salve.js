@@ -45,7 +45,7 @@ useEffect(()=>{
      <Container >
       <Card>
         <Grid container spacing={2} columnSpacing={-20}  rowSpacing={-5}>
-              <h1 className="wel">Welcome {user}</h1>
+              <h1 className="wel">WELCOME {user[0].toUpperCase() + user.substring(1)}</h1>
         </Grid>
        
        <Grid item xl={12} md={6} sm={12} xm={12} className="grid">

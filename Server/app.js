@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const foodroute = require('./Route/food')
 const Cartroute = require('./Route/Cart')
 const Adminroute = require('./Route/User')
-
+const menuRoute = require('./Route/Menu')
 const Orderroute = require('./Route/Order')
 const QRrouter = require('./Route/QR')
 const bodyParser=require('body-parser')
@@ -29,6 +29,7 @@ app.use('/cart',Cartroute)
 app.use('/order',Orderroute)
 app.use('/QR',QRrouter)
 app.use('/admin',Adminroute)
+app.use('/menu',menuRoute)
 
 mongoose.connect(process.env.DB, (err) => {
 

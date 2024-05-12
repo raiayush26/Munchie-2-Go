@@ -1,43 +1,43 @@
 import { Outlet } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Roles from "./Roles";
+// import Roles from "./Roles";
 // import Master from "../pages/Admin/Master";
 import Login from "../pages/Admin/Login";
-// import useAuth from "./useAuth";
+
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const RequireAuth = ()=>{
-          const [isAuthicated,setAuthicated]= useState(false)
+          const [isAuthenticated,setAuthenticated]= useState(false)
           // const[admin,setadmin]= useState(false)
+          const navigator = useNavigate()
 useEffect(()=>{
-  console.log(Roles);
+  // console.log(Roles);
   // Roles.forEach()
   auth.onAuthStateChanged((user)=>{
     if (user) {
-      
-      if (user.email === "master@admin.com") {
-        setAuthicated(true)
-        navigator("/Master")
+      console.log(user);
+      if (user.email == "master@admin.com") {
+        setAuthenticated(true);
         
       } else {
-        // console.log("hello");
-        setAuthicated(true)
+        
+        setAuthenticated(true);
       }
-      // setAuthicated(true)
+      // setAuthenticated(true)
     } else {
-      // setAuthicated("salve")
+      // setAuthenticated("salve")
       
     }
 
   });
+  // eslint-disable-next-line 
 },[])
           // const {auth} = useAuth();
           // const location = useLocation()
           // console.log( auth);
           return(
-            (isAuthicated===true)?<Outlet/>:<Login/> 
-            
-                  
+            (isAuthenticated===true)?<Outlet/>:<Login/> 
                     
           );
           

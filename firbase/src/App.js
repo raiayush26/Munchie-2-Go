@@ -27,11 +27,10 @@ function App() {
                        
                      <Route element={<RequireAuth/>}> 
                         <Route path= "/Master" element = {<Master />} />
+                        <Route path= "/addqr" element = {<QR/>} />
                         <Route path ="/Mastable" element= {<Datatable2/>}/>
                         <Route path= "/Sal" element = {<Salve />} />
                         <Route path ="/addMenu" element= {<AddMenu/>}/>
-                        <Route path= "/QR" element = {<QR/>} />
-
                       </Route>
                         
                       {/* Public Routes */}
@@ -42,6 +41,9 @@ function App() {
                       
                       <Route path ="/ce2" element= {<CustomExport2/>}/>
                       <Route path ="/Export" element= {<Export/>}/>
+                     
+                     
+                     
                       <Route path ="/ord" element= {<getOrder/>}/>
                       
                       
