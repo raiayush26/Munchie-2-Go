@@ -5,19 +5,19 @@ import React, { useEffect, useState } from "react";
 import Login from "../pages/Admin/Login";
 
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const RequireAuth = ()=>{
           const [isAuthenticated,setAuthenticated]= useState(false)
           // const[admin,setadmin]= useState(false)
-          const navigator = useNavigate()
+          // const navigator = useNavigate()
 useEffect(()=>{
   // console.log(Roles);
   // Roles.forEach()
   auth.onAuthStateChanged((user)=>{
     if (user) {
       console.log(user);
-      if (user.email == "master@admin.com") {
+      if (user.email === "master@admin.com") {
         setAuthenticated(true);
         
       } else {

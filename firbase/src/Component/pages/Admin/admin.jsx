@@ -11,11 +11,12 @@ import axios from "axios";
 // this on web page
 function Admin(){
    const navigate =useNavigate();
-    const [values, setvalues] = useState({
+    const [values, setValues] = useState({
       email: "",
-      password: ""
+      password: "",
+      admintype:""
     });
-    const[ Users,setuser]= useState([null]);
+
     // const [errorMsg,Toast.error] = useState("")
     const [submitButtonDisabled,setsubmitButtonDisabled] = useState(false)
     const addItem = async() => {
@@ -29,7 +30,8 @@ function Admin(){
            axios.post(`http://localhost:2610/admin/register`,
            {
              username:values.email,
-             password:values.password
+             password:values.password,
+            admintype:values.admintype,
            
           })
           
@@ -40,7 +42,7 @@ function Admin(){
             console.log(res);
             const user =res.user.email;// this is email is getting 
             console.log(user);
-            navigate('/Sal',{state:{user:Users}})
+            navigate('/Sal',{state:{user:values.admintype}})
 
             setsubmitButtonDisabled(false)
 
@@ -60,11 +62,13 @@ function Admin(){
        
        <form>
           <label for="email"><b>Email</b></label>
-          <input type="username" placeholder="Enter Email" name="email" onChange={(e)=>setvalues((prev)=>({...prev ,email:e.target.value}))} required/>
-          <label for="psw"><b>Password</b></label>
+          <input type="username" placeholder="Email for Registration" id="email" name="email" onChange={(e)=>setValues((prev)=>({...prev ,email:e.target.value}))} required/>
           
-          <input type="password" placeholder="Enter Password" name="psw" onChange={(e)=>setvalues((prev)=>({...prev ,password:e.target.value}))} required/>
-          <input onChange={(e)=>setuser(e.target.value) }className="bottomemail" placeholder ="User"/>
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Password" name="psw"  id='psw'onChange={(e)=>setValues((prev)=>({...prev ,password:e.target.value}))} required/>
+          
+          <label for="user"><b>User type</b></label>
+          <input onChange={(e)=>setValues((prev)=>({...prev ,admintype: e.target.value}))}className="bottomemail"  id ='user' placeholder ="User"/>
           <hr/>
          
           <p>By creating an account you agree to our .</p>

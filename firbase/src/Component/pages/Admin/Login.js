@@ -17,23 +17,12 @@ function Login() {
 
   const navigate = useNavigate();
 
-//  const [user,setUser] = useState([]);
-  const[foundentry,setfoundEntry]= useState();
-  const[ EmailID,setusername]= useState([null]);
-  const[ password,setpassword]= useState([null]);
-  const[ user,setuser]= useState([null]);
-  // const [errorMsg,seterrorMsg] = useState("")
-// const foundentry={};
+
+  const[ EmailID,setUsername]= useState([null]);
+  const[ password,setPassword]= useState([null]);
+
   const [submitButtonDisabled,setsubmitButtonDisabled] = useState(false);
-  const getUsername =async(e) =>{
-    try {
-      console.log(e);
-      const res = await axios.get(`http://localhost:2610/admin/getname/${e}`)
-      setfoundEntry(res.data)
-      return(foundentry);
-      }catch (error) {console.log("error");}
-}
-//  useEffect(()=>{getUsername(uername);},[])
+
   
   const handleLogin = async(e) => {
     try {
@@ -77,7 +66,7 @@ function Login() {
       console.error(error);
     }
   } 
-  // useEffect(()=>{;},[])
+
   return (
     <>
        <div className="register">
@@ -85,11 +74,10 @@ function Login() {
         <ToastContainer position="bottom-center" limit={1}/>
             <form className="register-form">    
                 <h1 className="h3 heading-h1 mb-3 mb-4 fw-normal">Login </h1>
-                <input onChange={(e)=>setusername(e.target.value) } className="bottomemail" type="email"  placeholder ="E-mail"/><br/>
-                <input onChange={(e)=>setuser(e.target.value) }className="bottomemail" placeholder ="User"/>
-                <input  onChange={(e)=>setpassword(e.target.value)}className="bottomemail" type="password" placeholder ="Password" autoComplete="false"/>
+                <input onChange={(e)=>setUsername(e.target.value) } className="bottomemail" type="email"  placeholder ="E-mail"/><br/>
+                <input  onChange={(e)=>setPassword(e.target.value)}className="bottomemail" type="password" placeholder ="Password" autoComplete="false"/>
                 <button disabled={submitButtonDisabled} className="registerbtn" onClick={e=>{handleLogin(e.preventDefault());}} id="login-button">Login </button> 
-                {/* <b>{errorMsg}</b> */}
+                
             </form>
             
         </div>
