@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 
@@ -10,9 +10,11 @@ import './addmenu.css'
 // import {ref,  getDownloadURL, uploadBytes} from "firebase/storage";
 // import {uploadBytesResumable} from "firebase/storage";
 // import { storage } from "../../firebase";
-// import {auth} from "../../firebase";
+import {auth} from "../../firebase";
+
 
 export default function AddMenu() {
+  // const [UID,setAuthenticated]= useState("")
   // const { currentUser } = auth;
   // const Id = currentUser.uid;
  const [form, setForm] = useState({
@@ -31,8 +33,8 @@ export default function AddMenu() {
      return { ...prev, ...value };
    });
  }
-
-  console.log()
+ 
+  // console.log(currentUser)
   async function onSubmit(e) {
     e.preventDefault();
     try {
@@ -60,47 +62,52 @@ export default function AddMenu() {
  // This function will handle the submission.
 //  async function onSubmit(e) {
 //    e.preventDefault();
-//   //  const imageRef = ref(storage, `/images/${currentUser.uid}/${file.name}`);
-//   //  await uploadBytes(imageRef, file)
-//   //    .then((snapshot) => {
-//   //      getDownloadURL(snapshot.ref)
-//   //        .then(async (downloadURL) => {
-//   //  // e.preventDefault();
-//   //  console.log("Image URL:", downloadURL);
-//    var formData = new FormData();
-//   //  formData.append("link", downloadURL);
-
-//    formData = new FormData();
-//    formData.append("photo", file);
-//    formData.append("name", form.name);
-//    formData.append("price", form.price);
-//    formData.append("category", form.category);
+//   //  console.log(UID);
 //    console.log(file);
+//    console.log(auth.currentUser.uid);
+//    console.log(storage)
+//    const imageRef = ref(storage, `images/${file.name}`);
+//    console.log(imageRef);
+//   await uploadBytes(imageRef, file).then((snapshot) => {
    
-//   console.log(formData);
-//   Toast.msg("item is save")
-//   const res = await axios.post("http://localhost:2610/menu/menu/post", formData, config) 
-//   console.log(res.data);
-//  if (res.data==="item is save") {
-//   Toast.msg("item is save")
+//   })
   
-//  } else {
-  
-//  }
- 
-//    setForm({ name: "", price: "", src: "",category:""});
+  //      getDownloadURL(snapshot.ref)
+  //        .then(async (downloadURL) => {
+  //  // e.preventDefault();
+  //  console.log("Image URL:", downloadURL);
+  //  var formData = new FormData();
+  // //  formData.append("link", downloadURL);
 
-//   //  }).catch((err) => {
-//   //        console.error("Error getting download URL from Firebase", err);
-//   //      });
-//   //  })
-//   //  .catch((err) => {
-//   //    console.error("Error uploading image to Firebase Storage", err);
-//   //  });
+  //  formData = new FormData();
+  //  formData.append("photo", file);
+  //  formData.append("name", form.name);
+  //  formData.append("price", form.price);
+  //  formData.append("category", form.category);
+  //  console.log(file);
    
-//   //  navigate("/");
-//  }
+  // console.log(formData);
+   // toast.info("item is save")
+   //   const res = await axios.post("http://localhost:2610/menu/menu/post", formData, config) 
+   //   console.log(res.data);
+   //   toast.info("item is save")
+  //  if (res.data==="item is save") {
+  
+  //  })
+  // }
  
+ useEffect(()=>{
+    auth.onAuthStateChanged((user)=>{
+    if (user) {     
+    //  setAuthenticated(user.uid)
+    } else {
+      // setAuthenticated("salve")
+      
+    }
+
+  });
+  // eslint-disable-next-line 
+},[])
  return (
    <div>
       <ToastContainer position="bottom-center" limit={1}/>

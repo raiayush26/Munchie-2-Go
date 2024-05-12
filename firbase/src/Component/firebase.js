@@ -20,5 +20,5 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 // const provider = auth.GoogleAuthProvider
 export  {auth,app }
-export const storage = getStorage(app, "gs://walmart-d07f5.appspot.com");
+export const storage = getStorage(app, "gs://walmart-d07f5.appspot.com/");
 // Initialize Firebase Authentication and get a reference to the service

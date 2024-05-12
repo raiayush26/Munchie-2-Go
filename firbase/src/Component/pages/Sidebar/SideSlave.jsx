@@ -13,21 +13,18 @@ const handlechange =() =>{
     <>
     <div className={isActive ? "sidebarGo": "main-sidebar"}>    
     {/* <div className="main-sidebar">     */}
-
             <div>
                 {/* <a> */}
             </div>
             <ul>
                 <li><a href="/addmenu">Add Menu</a></li> 
-               
-                
             </ul>
 
         </div>
         <section id="content-header">
-                    <div class="hamburger" >
-                       <img class="ham" src={hamburger} onClick={handlechange}  width="30px" alt=""/>
-                </div>
+              <div class="hamburger" >
+                  <img class="ham" src={hamburger} onClick={handlechange}  width="30px" alt=""/>
+              </div>
         </section>
         <div className="admin">
           </div>

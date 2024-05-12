@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import QrCodeStylingComponent from "./QrCodeStylingComponent";
-import QRCodeStyling from "qr-code-styling";
+// import QRCodeStyling from "qr-code-styling";
 
 
 

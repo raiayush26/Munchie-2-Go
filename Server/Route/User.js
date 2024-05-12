@@ -3,24 +3,24 @@ const UserRoute = require('express').Router();
 
 
 const bcrypt = require("bcrypt");
-const User = require('../models/adminModel');
+const User = require('../Models/adminModel');
 
 UserRoute.post("/register",async function(req,res){
     console.log("this is workin");
   try{
     const plainPassword = req.body.password;
     const hashPassword = bcrypt.hashSync(plainPassword, 7);
-
+    const admintype = req.body.admintype;
     const newItem = new User({
         
         username: req.body.username,
         password: hashPassword,
-        admintype: "Slave",
+        admintype: admintype,
         access:true
     })
     // save
     const save = await newItem.save()
-    // console.log(newItem);
+    console.log(newItem);
 
     res.status(200).json(newItem);
 } catch (error) {
